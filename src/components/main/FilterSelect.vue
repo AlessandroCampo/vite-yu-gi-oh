@@ -3,8 +3,13 @@
     <div class="input-group">
         <input type="text" v-model="store.searchText">
         <p>Found {{ store.cardList.length }} cards</p>
-        <select name="" id="">
+        <select name="" id="archetype">
             <option value="gladiator_beast"> Gladiator Beast </option>
+        </select>
+        <select name="" id="type" v-model="store.searchType">
+            <option value="Monster"> Monster </option>
+            <option value="Spell"> Spell </option>
+            <option value="Trap"> Trap </option>
         </select>
     </div>
 </template>

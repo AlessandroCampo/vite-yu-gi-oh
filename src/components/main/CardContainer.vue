@@ -5,7 +5,7 @@
             <img src="../../assets/img/loader.gif" alt="">
         </div>
         <SingleCard v-for="(card, index) in store.selectedList" :key="index" :card="card"
-            v-show='card.name.toLowerCase().includes(store.searchText.toLowerCase())' />
+            v-show='card.name.toLowerCase().includes(store.searchText.toLowerCase()) && (!store.searchType || card.type.includes(store.searchType))' />
     </div>
 </template>
 <script>
