@@ -32,6 +32,7 @@ export default {
       axios.get(store.apiURL).then((res) => {
         store.cardList = res.data.data.splice(0, 100)
         console.log(store.cardList)
+        store.loading = false
       })
     }
   }
