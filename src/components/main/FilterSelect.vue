@@ -3,10 +3,14 @@
     <div class="input-group">
         <input type="text" v-model="store.searchText">
         <p>Found {{ store.cardList.length }} cards</p>
-        <select name="" id="archetype">
-            <option value="gladiator_beast"> Gladiator Beast </option>
+        <select name="" id="archetype" v-model="store.selectedArchetype" @change="refreshList">
+            <option value="Gladiator Beast"> Gladiator Beast </option>
+            <option value="Inzektor"> Inzektor </option>
+            <option value="Infernoid"> Infernoid </option>
+            <option value="Spellbook"> Spellbook </option>
+            <option value="Lightsworn"> Lightsworn </option>
         </select>
-        <select name="" id="type" v-model="store.searchType">
+        <select name="" id="type" v-model="store.selectedType">
             <option value="Monster"> Monster </option>
             <option value="Spell"> Spell </option>
             <option value="Trap"> Trap </option>
@@ -21,6 +25,12 @@ export default {
     data() {
         return {
             store
+        }
+    },
+    methods: {
+        refreshList() {
+            store.selectedList = []
+            store.getCards()
         }
     }
 }
