@@ -3,6 +3,7 @@
 <template>
   <AppHeader />
   <main>
+    <FilterSelect />
     <CardContainer />
   </main>
 </template>
@@ -13,9 +14,10 @@ import axios from 'axios'
 import { store } from '../src/store'
 import AppHeader from './components/AppHeader.vue'
 import CardContainer from './components/main/CardContainer.vue'
+import FilterSelect from './components/main/FilterSelect.vue'
 
 export default {
-  components: { AppHeader, CardContainer },
+  components: { AppHeader, CardContainer, FilterSelect },
   data() {
     return {
 
@@ -28,7 +30,7 @@ export default {
     getCards() {
       console.log("ciao")
       axios.get(store.apiURL).then((res) => {
-        store.cardList = res.data.data.slice(0, 20)
+        store.cardList = res.data.data.splice(0, 100)
         console.log(store.cardList)
       })
     }
