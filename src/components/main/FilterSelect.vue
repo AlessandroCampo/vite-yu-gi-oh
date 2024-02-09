@@ -3,6 +3,9 @@
     <div class="input-group">
         <input type="text" v-model="store.searchText">
         <p>Found {{ store.cardList.length }} cards</p>
+        <select name="" id="">
+            <option value="gladiator_beast"> Gladiator Beast </option>
+        </select>
     </div>
 </template>
 <script>
@@ -33,9 +36,12 @@ export default {
     margin-top: 5px;
     padding-block: 10px;
 
-    input {
+    input,
+    select {
         width: 20%;
         font-size: 32px;
     }
+
+
 }
 </style>

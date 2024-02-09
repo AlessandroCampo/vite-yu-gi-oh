@@ -4,7 +4,7 @@
         <div class="loader" v-if="store.loading">
             <img src="../../assets/img/loader.gif" alt="">
         </div>
-        <SingleCard v-for="(card, index) in store.cardList" :key="index" :card="card"
+        <SingleCard v-for="(card, index) in store.selectedList" :key="index" :card="card"
             v-show='card.name.toLowerCase().includes(store.searchText.toLowerCase())' />
     </div>
 </template>

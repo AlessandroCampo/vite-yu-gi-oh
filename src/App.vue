@@ -30,10 +30,20 @@ export default {
     getCards() {
       console.log("ciao")
       axios.get(store.apiURL).then((res) => {
-        store.cardList = res.data.data.splice(0, 100)
-        console.log(store.cardList)
+        store.cardList = res.data.data
+        store.cardList.forEach((card) => {
+          if (card.archetype == store.selectedType) {
+            store.selectedList.push(card)
+          }
+        })
+        console.log(store.selectedList)
+        store.selectedList.sort(this.sortCards)
         store.loading = false
       })
+    },
+    sortCards(a, b) {
+      const order = { "Link Monster": 1, "Xyz Monster": 2, "Synchro Monster": 3, "Fusion Monster": 4, "Effect Monster": 5, "Normal Monster": 6, "Spell Card": 7, "Trap Card": 8 };
+      return order[a.type] - order[b.type];
     }
   }
 }
