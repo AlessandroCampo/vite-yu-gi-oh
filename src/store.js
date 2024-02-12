@@ -11,6 +11,7 @@ export const store = reactive({
     archetypeList: [],
     selectedList: [],
     selectedType: "",
+    loadedImgs: 0,
     getCards() {
         axios.get("https://db.ygoprodeck.com/api/v7/archetypes.php").then((res) => {
             store.archetypeList = res.data

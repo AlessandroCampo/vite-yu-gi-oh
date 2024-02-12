@@ -1,7 +1,7 @@
 
 <template>
     <div class="card-container">
-        <div class="loader" v-if="store.loading">
+        <div class="loader" v-show="store.loading">
             <img src="../../assets/img/loader.gif" alt="">
         </div>
         <SingleCard v-for="(card, index) in filteredList" :key="index" :card="card" />

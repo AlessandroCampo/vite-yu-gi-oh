@@ -2,7 +2,7 @@
 <template>
     <div class="card">
         <figure>
-            <img :src="card.card_images[0].image_url" alt="">
+            <img :src="card.card_images[0].image_url" alt="" @load="setLoaded()">
         </figure>
 
         <div class="card-info">
@@ -12,11 +12,21 @@
     </div>
 </template>
 <script>
+import { store } from '../../../store'
 export default {
     props: ["card"],
     name: 'singleCard',
     data() {
         return {}
+    },
+    methods: {
+        async setLoaded() {
+            store.loadedImgs++
+            console.log(store.loading)
+            if (store.loadedImgs === store.selectedList.length - 1) {
+                store.loading = false
+            }
+        }
     }
 }
 

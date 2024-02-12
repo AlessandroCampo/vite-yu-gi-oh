@@ -29,13 +29,18 @@ export default {
   methods: {
     refreshList() {
       store.selectedList = []
-      store.getCards()
-      // store.cardList.forEach((card) => {
-      //     if (card.archetype === store.selectedArchetype) {
-      //         store.selectedList.push(card)
-      //     }
-      // })
-      // store.selectedList.sort(store.sortCards)
+      store.loadedImgs = 0
+      // store.getCards()
+      store.loading = true
+      store.cardList.forEach((card) => {
+        if (card.archetype === store.selectedArchetype) {
+          store.selectedList.push(card)
+        }
+      })
+      if (store.cardList.length === 0) {
+        store.loading = false
+      }
+      store.selectedList.sort(store.sortCards)
     }
   }
 }
