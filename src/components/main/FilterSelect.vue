@@ -2,18 +2,17 @@
 <template>
     <div class="input-group">
         <input type="text" v-model="store.searchText">
-        <p>Found {{ store.cardList.length }} cards</p>
+        <p>Found {{ store.selectedList.length }} cards</p>
         <select name="" id="archetype" v-model="store.selectedArchetype" @change="refreshList">
-            <option value="Gladiator Beast"> Gladiator Beast </option>
-            <option value="Inzektor"> Inzektor </option>
-            <option value="Infernoid"> Infernoid </option>
-            <option value="Spellbook"> Spellbook </option>
-            <option value="Lightsworn"> Lightsworn </option>
+            <option :value="archetype.archetype_name" v-for="(archetype, index) in store.archetypeList">
+                {{ archetype.archetype_name }}
+            </option>
         </select>
         <select name="" id="type" v-model="store.selectedType">
             <option value="Monster"> Monster </option>
             <option value="Spell"> Spell </option>
             <option value="Trap"> Trap </option>
+            <option value=""> All </option>
         </select>
     </div>
 </template>
@@ -31,6 +30,12 @@ export default {
         refreshList() {
             store.selectedList = []
             store.getCards()
+            // store.cardList.forEach((card) => {
+            //     if (card.archetype === store.selectedArchetype) {
+            //         store.selectedList.push(card)
+            //     }
+            // })
+            // store.selectedList.sort(store.sortCards)
         }
     }
 }

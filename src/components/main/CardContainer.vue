@@ -6,6 +6,7 @@
         </div>
         <SingleCard v-for="(card, index) in store.selectedList" :key="index" :card="card"
             v-show='card.name.toLowerCase().includes(store.searchText.toLowerCase()) && (!store.selectedType || card.type.includes(store.selectedType)) && card.archetype.includes(store.selectedArchetype)' />
+
     </div>
 </template>
 <script>
@@ -20,6 +21,9 @@ export default {
         return {
             store
         }
+    },
+    computed: {
+
     }
 }
 
