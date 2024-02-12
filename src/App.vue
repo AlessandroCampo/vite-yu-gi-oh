@@ -3,7 +3,7 @@
 <template>
   <AppHeader />
   <main>
-    <FilterSelect />
+    <FilterSelect @selectChange="refreshList()" />
     <CardContainer />
   </main>
 </template>
@@ -27,7 +27,16 @@ export default {
     store.getCards()
   },
   methods: {
-
+    refreshList() {
+      store.selectedList = []
+      store.getCards()
+      // store.cardList.forEach((card) => {
+      //     if (card.archetype === store.selectedArchetype) {
+      //         store.selectedList.push(card)
+      //     }
+      // })
+      // store.selectedList.sort(store.sortCards)
+    }
   }
 }
 </script>

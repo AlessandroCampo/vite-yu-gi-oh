@@ -3,7 +3,7 @@
     <div class="input-group">
         <input type="text" v-model="store.searchText">
         <p>Found {{ store.selectedList.length }} cards</p>
-        <select name="" id="archetype" v-model="store.selectedArchetype" @change="refreshList">
+        <select name="" id="archetype" v-model="store.selectedArchetype" @change="$emit('selectChange')">
             <option :value="archetype.archetype_name" v-for="(archetype, index) in store.archetypeList">
                 {{ archetype.archetype_name }}
             </option>
@@ -27,16 +27,7 @@ export default {
         }
     },
     methods: {
-        refreshList() {
-            store.selectedList = []
-            store.getCards()
-            // store.cardList.forEach((card) => {
-            //     if (card.archetype === store.selectedArchetype) {
-            //         store.selectedList.push(card)
-            //     }
-            // })
-            // store.selectedList.sort(store.sortCards)
-        }
+
     }
 }
 

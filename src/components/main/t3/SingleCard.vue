@@ -1,7 +1,10 @@
 
 <template>
     <div class="card">
-        <img :src="card.card_images[0].image_url" alt="">
+        <figure>
+            <img :src="card.card_images[0].image_url" alt="">
+        </figure>
+
         <div class="card-info">
             <p>{{ card.name }}</p>
             <p>{{ card.type }}</p>
@@ -25,6 +28,11 @@ export default {
     height: calc(50% - 10px);
     background-color: #d48f38;
     padding-bottom: 10px;
+
+    &:hover>figure {
+        scale: 1.2;
+        filter: brightness(1.25);
+    }
 
     img {
         width: 100%;

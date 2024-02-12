@@ -4,8 +4,7 @@
         <div class="loader" v-if="store.loading">
             <img src="../../assets/img/loader.gif" alt="">
         </div>
-        <SingleCard v-for="(card, index) in store.selectedList" :key="index" :card="card"
-            v-show='card.name.toLowerCase().includes(store.searchText.toLowerCase()) && (!store.selectedType || card.type.includes(store.selectedType)) && card.archetype.includes(store.selectedArchetype)' />
+        <SingleCard v-for="(card, index) in filteredList" :key="index" :card="card" />
 
     </div>
 </template>
@@ -23,7 +22,11 @@ export default {
         }
     },
     computed: {
-
+        filteredList() {
+            return store.selectedList.filter(card => {
+                return card.name.toLowerCase().includes(store.searchText.toLowerCase()) && (!store.selectedType || card.type.includes(store.selectedType)) && card.archetype.includes(store.selectedArchetype)
+            })
+        }
     }
 }
 
